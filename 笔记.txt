@@ -1,0 +1,69 @@
+开发我们的小牛电动车项目
+1.创建02xiaoniu文件夹，用来放web(前端) server(服务器)
+
+2.在web文件夹中创建前端项目
+ 2-1：在web文件夹下运行:vue init webpack
+
+3.由于开发的是手机网页或者app，需要适配所有的设备，采用re,+flex布局方案
+	3-1：在index.html中编写 rem代码
+	rem==>root根em子体高，rem方案就是指定一个根元素的字体大小，当元素的字体大小发生改变时，网页中(使用了rem单位)的元素大小也会等比例改变
+	<script>
+		(function(){
+			var html =document.documentElement;
+			var w = html.clientWidth;
+			//在750的尺寸下 1个rem==100个像素
+			html.style.fontSize = (w/750)*100+“px”;
+			window.onresize = ()=>{
+				arguments.callee()
+			}
+		}())
+	</script>
+	
+4.基本配置
+	在web下创建 src/pages/index.vue
+	1.配置路由：src/router/index.js
+	2.引入 ：import index from '@/pages/index' 
+		routes: [
+		    {
+		      path: '/',
+		      name: 'index',
+		      component: index
+		    }
+		  ]
+	3.找到入口组件src/App.vue
+		把不需要的结构和样式清理掉
+	4.导入我们的素材，放到src/assets
+	
+5.使用less:npm i less less-loader -D
+	
+6.单页开发
+
+7.其他所有静态网页制作
+
+8.由于当前网页是静态的，我们要开发一个管理系统来管理(增查删改)网页中的信息
+	在我02xiaoniu文件夹下建一个manage的文件夹
+	
+9.server文件夹
+	0.npm init -y
+	1.npm i  koa koa-body koa-router koa-static koa2-cors mongoose -S
+	2.建立一个app.js 做为后端的入口
+	(ps:现在前端的服务器端口是8080，后台是9000，后端的是3000)
+	3.建一个mongo.js做为数据库的连接及操作模块
+
+10.后台manage要发http请求：使用axios
+	1. npm i axios -S
+	2.main.js中引入axios:
+		import axios from "axios";
+		axios.defaults.baseURL = "http://127.0.0.1:3000"
+		Vue.prototype.$http = axios；
+	在web中的main.js中
+	1. npm i axios -S
+	2.main.js中引入axios:
+		import axios from "axios";
+		axios.defaults.baseURL = "http://127.0.0.1:3000"
+		Vue.prototype.$http = axios；
+
+
+
+	
+
